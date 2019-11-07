@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +9,7 @@ class App extends Component {
   }
 }
 
-const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+const validEmailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 const validateForm = (errors) => {
   let valid = true;
   Object.values(errors).forEach(
@@ -26,6 +25,8 @@ class Register extends Component {
       fullName: null,
       email: null,
       password: null,
+      phone:null,
+      address:null,
       errors: {
         fullName: '',
         email: '',
@@ -94,34 +95,34 @@ class Register extends Component {
       <div className='wrapper'>
         <div className='form-wrapper'>
           <h2>Welcome</h2>
-          <form onSubmit={this.handleSubmit} noValidate>
+          <form onSubmit={this.handleSubmit}>
             <div className='fullName'>
               <label htmlFor="fullName">Full Name</label>
-              <input type='text' name='fullName' onChange={this.handleChange} noValidate />
+              <input type='text' name='fullName' onChange={this.handleChange}/>
               {errors.fullName.length > 0 && 
                 <span className='error'>{errors.fullName}</span>}
             </div>
             <div className='email'>
               <label htmlFor="email">Email</label>
-              <input type='email' name='email' onChange={this.handleChange} noValidate />
+              <input type='email' name='email' onChange={this.handleChange} />
               {errors.email.length > 0 && 
                 <span className='error'>{errors.email}</span>}
             </div>
             <div className='password'>
               <label htmlFor="password">Password</label>
-              <input type='password' name='password' onChange={this.handleChange} noValidate />
+              <input type='password' name='password' onChange={this.handleChange} />
               {errors.password.length > 0 && 
                 <span className='error'>{errors.password}</span>}
             </div>
             <div className='phone'>
               <label htmlFor="phone">Phone</label>
-              <input type='number' name='phone' onChange={this.handleChange} noValidate />
+              <input type='number' name='phone' onChange={this.handleChange} />
               {errors.phone.length > 0 && 
                 <span className='error'>{errors.phone}</span>}
             </div>
             <div className='address'>
               <label htmlFor="address">Address</label>
-              <input type='text' name='address' onChange={this.handleChange} noValidate />
+              <input type='text' name='address' onChange={this.handleChange} />
               {errors.address.length > 0 && 
                 <span className='error'>{errors.address}</span>}
             </div>
